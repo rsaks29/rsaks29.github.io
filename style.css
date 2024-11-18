@@ -7,3 +7,33 @@ html {
 .embed-container2 {
   text-align: center;
 }
+/* Add this to your style.css file */
+
+/* Style for images with hover effect */
+img {
+  width: 275px; /* Fixed width */
+  height: auto; /* Adjust height proportionally */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover transition */
+}
+
+img:hover {
+  transform: scale(1.1); /* Slightly zoom in */
+  filter: brightness(1.2); /* Increase brightness */
+}
+
+/* Optional: Style for links */
+a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Inherit text color */
+}
+
+a:hover {
+  opacity: 0.8; /* Slight dimming on hover */
+}
+
+/* Style for the project titles */
+p {
+  font-size: 14px;
+  margin-top: 8px;
+  text-align: center;
+}
