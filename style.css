@@ -37,3 +37,50 @@ p {
   margin-top: 8px;
   text-align: center;
 }
+/* Basic styling for the dropdown button */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Dropdown list styles */
+.dropdown-list {
+  display: none; /* Hide the dropdown list by default */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 5px;
+}
+
+.dropdown-list li {
+  padding: 10px;
+}
+
+.dropdown-list li a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-list li a:hover {
+  background-color: #ddd; /* Light gray on hover */
+}
