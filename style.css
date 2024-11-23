@@ -54,7 +54,7 @@ p {
 }
 
 .dropdown-btn:hover {
-  background-color: white; /* Darker green on hover */
+  background-color: green; /* Darker green on hover */
 }
 
 /* Dropdown list styles */
