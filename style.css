@@ -90,7 +90,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
   gap: 20px; /* Space between items */
-  justify-items: center; /* Center items horizontally */
+  justify-items: left; /* Center items horizontally */
   padding: 20px; /* Add padding around the grid */
 }
 
@@ -104,7 +104,7 @@ p {
 }
 
 .project-item p {
-  text-align: center; /* Center project title text */
+  text-align: left; /* Center project title text */
   margin: 10px 0 0 0; /* Add space between the image and text */
   font-size: 16px; /* Adjust font size */
 }
