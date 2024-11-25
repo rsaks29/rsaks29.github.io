@@ -85,25 +85,26 @@ p {
   background-color: #ddd; /* Light gray on hover */
 }
 
+/* Projects grid container */
 .projects-container {
   display: grid;
-  grid-template-columns: repeat(2, 2 fr);
-  grid-auto-rows: auto;
-  gap: 20px;
-  justify-items: center;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 20px; /* Space between items */
+  justify-items: center; /* Center items horizontally */
+  padding: 20px; /* Add padding around the grid */
 }
 
+/* Each project item */
 .project-item img {
-  width: 275px; /* Image width */
-  height: 175px; /* Image height */
-  object-fit: cover; /* Fit images neatly */
-  border: 2px solid #ccc; /* Optional styling */
-  border-radius: 5px; /* Rounded corners */
-  display: block; /* Prevent inline spacing issues */
+  width: 275px; /* Width of images */
+  height: 175px; /* Height of images */
+  object-fit: cover; /* Makes images fit neatly */
+  border: 2px solid #ccc; /* Optional border */
+  border-radius: 5px; /* Optional rounded corners */
 }
 
 .project-item p {
-  text-align: center; /* Center text under the images */
+  text-align: center; /* Center project title text */
   margin: 10px 0 0 0; /* Add space between the image and text */
-  font-size: 16px; /* Adjust text size */
+  font-size: 16px; /* Adjust font size */
 }
