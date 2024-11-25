@@ -84,3 +84,26 @@ p {
 .dropdown-list li a:hover {
   background-color: #ddd; /* Light gray on hover */
 }
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 2 fr);
+  grid-auto-rows: auto;
+  gap: 20px;
+  justify-items: center;
+}
+
+.project-item img {
+  width: 275px; /* Image width */
+  height: 175px; /* Image height */
+  object-fit: cover; /* Fit images neatly */
+  border: 2px solid #ccc; /* Optional styling */
+  border-radius: 5px; /* Rounded corners */
+  display: block; /* Prevent inline spacing issues */
+}
+
+.project-item p {
+  text-align: center; /* Center text under the images */
+  margin: 10px 0 0 0; /* Add space between the image and text */
+  font-size: 16px; /* Adjust text size */
+}
