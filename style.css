@@ -89,7 +89,7 @@ p {
 .projects-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 20px; /* Space between items */
+  gap: 5px; /* Space between items */
   justify-items: start; /* Align items to the left */
   padding: 20px; /* Add padding around the grid */
 }
