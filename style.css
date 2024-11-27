@@ -88,9 +88,9 @@ p {
 /* Projects grid container */
 .projects-container {
   display: grid;
-  grid-template-columns: auto auto; /* Adjust columns to fit content */
+  grid-template-columns: 275px 275px; /* Set columns to match image width */
   gap: 20px; /* Space between items */
-  justify-content: start; /* Align the entire grid to the left */
+  justify-content: start; /* Align grid to the left */
   padding: 20px; /* Add padding around the grid */
 }
 
