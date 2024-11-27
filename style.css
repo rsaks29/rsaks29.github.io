@@ -90,7 +90,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
   gap: 20px; /* Space between items */
-  justify-items: center; /* Center items horizontally */
+  justify-items: left; /* Center items horizontally */
   padding: 20px; /* Add padding around the grid */
 }
 
