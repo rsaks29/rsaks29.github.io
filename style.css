@@ -91,7 +91,7 @@ p {
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
   gap: 5px; /* Space between items */
   justify-items: start; /* Align items to the left */
-  padding: 20px; /* Add padding around the grid */
+  padding: 5px; /* Add padding around the grid */
 }
 
 /* Each project item */
