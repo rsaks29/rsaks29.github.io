@@ -3,30 +3,59 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>replit</title>
+    <title>Contact Me</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
-  <h1>
-    <strong>HOW TO CONTACT ME</strong>
-  </h1>
-  <hr>
-  <nav>
-<!-- Dropdown button -->
-<div class="Menu">
-  <button class="dropdown-btn">Select Option</button>
-  <ul class="dropdown-list">
-      <li><a href="index.html">Main</a></li>
-      <li><a href="AboutMe.html">About me</a></li>
-      <li><a href="Projects.html">Projects</a></li>
-      <li><a href="HowToContactMe.html">How to contact me?</a></li>
-  </ul>
-</div>
-<hr>
-<script src="script.js"></script>
-  <li><a href="mailto:ron.saks@gmx.ch?subject=Hello%20There">Personal Email: ron.saks@gmx.ch</a></li>
-  <li><a href="tel:+41-76-295-06-97" target="_blank">Phone: +41 76 295 06 97</a></li>
-  <li><a href="https://github.com/rsaks29" target="_blank">GitHub: rsaks29</a></li>
-  <li><a href="https://github.com/goblin101-co" target="_blank">GitHub Organization: rsaks29 CO</a></li>
-  <li><a href="https://www.linkedin.com/in/ron-samuel-saks-9aa663221/" target="_blank">LinkedIn: Ron Saks</a></li>
-</nav>
+  <body>
+    <h1><strong>HOW TO CONTACT ME</strong></h1>
+    <hr>
+    <nav>
+      <!-- Dropdown button -->
+      <div class="Menu">
+        <button class="dropdown-btn">Select Option</button>
+        <ul class="dropdown-list">
+          <li><a href="index.html">Main</a></li>
+          <li><a href="AboutMe.html">About me</a></li>
+          <li><a href="Projects.html">Projects</a></li>
+          <li><a href="HowToContactMe.html">How to contact me?</a></li>
+        </ul>
+      </div>
+      <hr>
+      <ul>
+        <li><a href="ron.saks@gmx.ch">Personal Email: ron.saks@gmx.ch</a></li>
+        <li><a href="tel:+41-76-295-06-97" target="_blank">Phone: +41 76 295 06 97</a></li>
+        <li><a href="https://github.com/rsaks29" target="_blank">GitHub: rsaks29</a></li>
+        <li><a href="https://github.com/goblin101-co" target="_blank">GitHub Organization: rsaks29 CO</a></li>
+        <li><a href="https://www.linkedin.com/in/ron-samuel-saks-9aa663221/" target="_blank">LinkedIn: Ron Saks</a></li>
+      </ul>
+    </nav>
+    
+    <h2>Send me an email</h2>
+    <form id="contact-form" onsubmit="sendEmail(event)">
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required><br>
+      
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required><br>
+      
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br>
+      
+      <button type="submit">Send Email</button>
+    </form>
+    
+    <script>
+      function sendEmail(event) {
+        event.preventDefault(); // Prevents actual form submission
+        
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+        
+        const mailtoLink = `mailto:ron.saks@gmx.ch?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
+        
+        window.location.href = mailtoLink;
+      }
+    </script>
+  </body>
 </html>
