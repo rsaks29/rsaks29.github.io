@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
       (function(){
-        emailjs.init("7agWfKJIVm8Fha7A7"); // Replace with your EmailJS user ID
+        emailjs.init("7agWfKJIVm8Fha7A7"); // EmailJS User ID
       })();
     </script>
   </head>
@@ -60,9 +60,11 @@
         }).then(
           function(response) {
             alert("Email sent successfully!");
+            console.log("SUCCESS:", response);
           },
           function(error) {
-            alert("Failed to send email: " + error);
+            alert("Failed to send email. Check console for details.");
+            console.error("EmailJS Error:", error);
           }
         );
       }
