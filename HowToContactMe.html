@@ -3,14 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>HOW TO CONTACT ME?</title>
+    <title>Contact Me</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function(){
+        emailjs.init("7agWfKJIVm8Fha7A7"); // Replace with your EmailJS user ID
+      })();
+    </script>
   </head>
   <body>
     <h1><strong>HOW TO CONTACT ME</strong></h1>
     <hr>
     <nav>
-      <!-- Dropdown button -->
       <div class="Menu">
         <button class="dropdown-btn">Select Option</button>
         <ul class="dropdown-list">
@@ -22,7 +27,7 @@
       </div>
       <hr>
       <ul>
-        <li><a href="ron.saks@gmx.ch">Personal Email: ron.saks@gmx.ch</a></li>
+        <li><a href="mailto:ron.saks@gmx.ch?subject=Hello%20There">Personal Email: ron.saks@gmx.ch</a></li>
         <li><a href="tel:+41-76-295-06-97" target="_blank">Phone: +41 76 295 06 97</a></li>
         <li><a href="https://github.com/rsaks29" target="_blank">GitHub: rsaks29</a></li>
         <li><a href="https://github.com/goblin101-co" target="_blank">GitHub Organization: rsaks29 CO</a></li>
@@ -46,15 +51,20 @@
     
     <script>
       function sendEmail(event) {
-        event.preventDefault(); // Prevents actual form submission
+        event.preventDefault();
         
-        const email = document.getElementById("email").value;
-        const subject = document.getElementById("subject").value;
-        const message = document.getElementById("message").value;
-        
-        const mailtoLink = `mailto:ron.saks@gmx.ch?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + email + "\n\n" + message)}`;
-        
-        window.location.href = mailtoLink;
+        emailjs.send("service_ef8oh5y", "template_yfzk6cv", {
+          from_email: document.getElementById("email").value,
+          subject: document.getElementById("subject").value,
+          message: document.getElementById("message").value
+        }).then(
+          function(response) {
+            alert("Email sent successfully!");
+          },
+          function(error) {
+            alert("Failed to send email: " + error);
+          }
+        );
       }
     </script>
   </body>
