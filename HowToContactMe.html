@@ -1,84 +1,138 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Me</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-      // Initialize EmailJS
-      emailjs.init("7agWfKJIVm8Fha7A7");
-    </script>
-    <style>
-      /* Simple dropdown styles */
-      .dropdown-list { display: none; list-style: none; padding: 0; margin: 0; }
-      .dropdown-list.active { display: block; }
-      .dropdown-btn { cursor: pointer; }
-    </style>
-  </head>
-  <body>
-    <h1><strong>HOW TO CONTACT ME</strong></h1>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Me</title>
+  
+  <!-- your style.css can live here, or copy these bits below into it -->
+  <style>
+    .Menu { position: relative; display: inline-block; }
+    .dropdown-btn {
+      padding: 10px 20px;
+      background: #1b8a1b;
+      color: white;
+      border: none;
+      cursor: pointer;
+      /* kill any built-in arrow */
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+    }
+    /* hide the arrow if you had one via ::after */
+    .dropdown-btn::after { content: none !important; }
+
+    .dropdown-list {
+      list-style: none;
+      margin: 0;
+      padding: 5px 0;
+      background: #eee;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: none;
+    }
+    .dropdown-list.active { display: block; }
+    .dropdown-list li a {
+      display: block;
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #333;
+    }
+    .dropdown-list li a:hover { background: #ddd; }
+  </style>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // ← REPLACE with your Public Key from Account → API Keys
+    emailjs.init("7agWfKJIVm8Fha7A7");
+  </script>
+</head>
+<body>
+
+  <h1><strong>HOW TO CONTACT ME</strong></h1>
+  <hr>
+
+  <nav>
+    <div class="Menu">
+      <button class="dropdown-btn">Select Option</button>
+      <ul class="dropdown-list">
+        <li><a href="index.html">Main</a></li>
+        <li><a href="AboutMe.html">About me</a></li>
+        <li><a href="Projects.html">Projects</a></li>
+        <li><a href="HowToContactMe.html">How to contact me?</a></li>
+      </ul>
+    </div>
     <hr>
-    <nav>
-      <div class="Menu">
-        <button class="dropdown-btn">Select Option</button>
-        <ul class="dropdown-list">
-          <li><a href="index.html">Main</a></li>
-          <li><a href="AboutMe.html">About Me</a></li>
-          <li><a href="Projects.html">Projects</a></li>
-          <li><a href="HowToContactMe.html">Contact Me</a></li>
-        </ul>
-      </div>
-    </nav>
+    <ul>
+      <li><a href="mailto:ron.saks@gmx.ch?subject=Hello%20There">
+        Personal Email: ron.saks@gmx.ch
+      </a></li>
+      <li><a href="tel:+41-76-295-06-97">Phone: +41 76 295 06 97</a></li>
+      <li><a href="https://github.com/rsaks29" target="_blank">GitHub: rsaks29</a></li>
+      <li><a href="https://github.com/goblin101-co" target="_blank">
+        GitHub Organization: rsaks29 CO
+      </a></li>
+      <li><a href="https://www.linkedin.com/in/ron-samuel-saks-9aa663221/" target="_blank">
+        LinkedIn: Ron Saks
+      </a></li>
+    </ul>
+  </nav>
 
-    <h2>Send me an email</h2>
-    <form id="contact-form">
-      <label for="email">Your Email:</label>
-      <input type="email" id="email" name="email" required><br>
 
-      <label for="subject">Subject:</label>
-      <input type="text" id="subject" name="subject" required><br>
+  <h2>Send me an email</h2>
+  <form id="contact-form">
+    <label for="email">Your Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
 
-      <label for="message">Message:</label><br>
-      <textarea id="message" name="message" rows="5" required></textarea><br>
+    <label for="subject">Subject:</label><br>
+    <input type="text" id="subject" name="subject" required><br><br>
 
-      <button type="submit">Send Email</button>
-    </form>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="5" required></textarea><br><br>
 
-    <!-- Scripts at end for proper loading -->
-    <script>
-      // Dropdown toggle
-      document.addEventListener('DOMContentLoaded', function() {
-        const btn = document.querySelector('.dropdown-btn');
-        const list = document.querySelector('.dropdown-list');
-        btn.addEventListener('click', () => {
-          list.classList.toggle('active');
-        });
+    <button type="submit">Send Email</button>
+  </form>
+
+  <script>
+    // dropdown toggle
+    document.querySelector(".dropdown-btn")
+      .addEventListener("click", () => {
+        document.querySelector(".dropdown-list")
+          .classList.toggle("active");
       });
 
-      // EmailJS send logic
-      document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // email send
+    document.getElementById("contact-form")
+      .addEventListener("submit", function(e) {
         e.preventDefault();
 
-        const params = {
-          from_email: document.getElementById('email').value,
-          subject: document.getElementById('subject').value,
-          message: document.getElementById('message').value
-        };
-
-        emailjs.send('service_ef8oh5y', 'template_yfzk6cv', params)
-          .then(response => {
-            alert('Email sent successfully!');
-            console.log('SUCCESS:', response);
-            this.reset();
-          })
-          .catch(error => {
-            console.error('EmailJS Error:', error);
-            alert('Failed to send email. Check console for details.');
-          });
+        emailjs.send(
+          // ← REPLACE with your SMTP‐service ID
+          "service_ef8oh5y",
+          // ← REPLACE with your Template ID
+          "template_yfzk6cv",
+          {
+            from_email: document.getElementById("email").value,
+            subject:    document.getElementById("subject").value,
+            message:    document.getElementById("message").value
+          }
+        ).then(
+          function(response) {
+            alert("Email sent successfully!");
+            console.log("SUCCESS:", response);
+            document.getElementById("contact-form").reset();
+          },
+          function(error) {
+            alert("Failed to send email. See console for details.");
+            console.error("EmailJS Error:", error);
+          }
+        );
       });
-    </script>
-  </body>
+  </script>
+
+</body>
 </html>
