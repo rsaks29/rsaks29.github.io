@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Contact Me</title>
-
-  <!-- Inline styles you already had for the dropdown -->
+  
+  <!-- your existing inline styles -->
   <style>
     .Menu { position: relative; display: inline-block; }
     .dropdown-btn {
@@ -14,12 +14,15 @@
       color: white;
       border: none;
       cursor: pointer;
+      /* kill any built-in arrow */
       -webkit-appearance: none;
          -moz-appearance: none;
               appearance: none;
       border-radius: 5px;
     }
+    /* hide the arrow if you had one via ::after */
     .dropdown-btn::after { content: none !important; }
+
     .dropdown-list {
       list-style: none;
       margin: 0;
@@ -42,15 +45,20 @@
       color: #333;
     }
     .dropdown-list li a:hover { background: #ddd; }
-    /* Small status styles so it looks nice even without external CSS */
+
+    /* small extras for form feedback */
     #status { margin-top: .5rem; font-size: .95rem; }
-    #status.error { color: #a00; }
     #status.ok { color: #065; }
+    #status.error { color: #a00; }
     button[disabled] { opacity: .6; cursor: not-allowed; }
   </style>
 
-  <!-- Link your external stylesheet (the CSS you sent below) -->
-  <link rel="stylesheet" href="style.css">
+  <!-- EmailJS v4 SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // Init with your public key (v4 syntax)
+    emailjs.init({ publicKey: "7agWfKJIVm8Fha7A7" });
+  </script>
 </head>
 <body>
 
@@ -84,10 +92,9 @@
   </nav>
 
   <h2>Send me an email</h2>
-
-  <!-- Form (names MUST match your EmailJS template variables) -->
   <form id="contact-form">
     <label for="email">Your Email:</label><br>
+    <!-- IMPORTANT: name must match your EmailJS template variable -->
     <input type="email" id="email" name="reply_to" required><br><br>
 
     <label for="subject">Subject:</label><br>
@@ -96,31 +103,27 @@
     <label for="message">Message:</label><br>
     <textarea id="message" name="message" rows="5" required></textarea><br><br>
 
-    <!-- honeypot to reduce spam -->
+    <!-- tiny honeypot to reduce spam -->
     <input type="text" name="bot_field" style="display:none" tabindex="-1" autocomplete="off">
 
     <button id="send-btn" type="submit">Send Email</button>
     <p id="status" aria-live="polite"></p>
   </form>
 
-  <!-- EmailJS v4 SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // Init with your public key (v4 syntax)
-    emailjs.init({ publicKey: "7agWfKJIVm8Fha7A7" });
-
-    // Dropdown toggle
+    // dropdown toggle (kept as-is)
     document.querySelector(".dropdown-btn")
       .addEventListener("click", () => {
-        document.querySelector(".dropdown-list").classList.toggle("active");
+        document.querySelector(".dropdown-list")
+          .classList.toggle("active");
       });
 
-    // Email send via sendForm
+    // EmailJS send using sendForm
     const form   = document.getElementById("contact-form");
     const btn    = document.getElementById("send-btn");
     const status = document.getElementById("status");
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", async function(e) {
       e.preventDefault();
 
       // simple bot trap
@@ -134,20 +137,21 @@
         await emailjs.sendForm(
           "service_ef8oh5y",   // Your Service ID
           "template_yfzk6cv",  // Your Template ID
-          form
+          form                 // Uses field names to map to template vars
         );
         status.className = "ok";
         status.textContent = "✅ Email sent! I’ll get back to you soon.";
         form.reset();
-      } catch (err) {
-        console.error("EmailJS Error:", err);
+      } catch (error) {
+        console.error("EmailJS Error:", error);
         status.className = "error";
-        status.textContent = "❌ Failed to send. Please try again in a moment.";
-        alert("Failed to send email. Check console for details.");
+        status.textContent = "❌ Failed to send. Please try again shortly.";
+        alert("Failed to send email. See console for details.");
       } finally {
         btn.disabled = false;
       }
     });
   </script>
+
 </body>
 </html>
