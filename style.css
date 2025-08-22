@@ -1,112 +1,93 @@
 html {
-  background-color: lightblue
+  background-color: lightblue;
 }
-.embed-container {
-  text-align: center;
-}
+
+.embed-container,
 .embed-container2 {
   text-align: center;
 }
-/* Add this to your style.css file */
 
-/* Style for images with hover effect */
+/* Image hover effect */
 img {
-  width: 275px; /* Fixed width */
-  height: auto; /* Adjust height proportionally */
-  transition: transform 0.3s ease, filter 0.3s ease; /* Smooth hover transition */
+  width: 275px;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
-
 img:hover {
-  transform: scale(1.1); /* Slightly zoom in */
-  filter: brightness(1.2); /* Increase brightness */
+  transform: scale(1.1);
+  filter: brightness(1.2);
 }
 
-/* Optional: Style for links */
+/* Links */
 a {
-  text-decoration: none; /* Remove underline */
-  color: black; /* Inherit text color */
+  text-decoration: none;
+  color: black;
 }
-
 a:hover {
-  opacity: 0.8; /* Slight dimming on hover */
+  opacity: 0.8;
 }
 
-/* Style for the project titles */
+/* Project titles */
 p {
   font-size: 14px;
   margin-top: 8px;
   text-align: center;
 }
-/* Basic styling for the dropdown button */
+
+/* (You also had a second dropdown style block — keeping it, but your page uses .Menu/.dropdown-btn/.dropdown-list already) */
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-btn {
-  background-color: green; /* Green background */
-  color: white; /* White text */
+  background-color: green;
+  color: white;
   padding: 10px 20px;
   font-size: 16px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
 }
-
 .dropdown-btn:hover {
-  background-color: darkgreen; /* Darker green on hover */
+  background-color: darkgreen;
 }
-
-/* Dropdown list styles */
 .dropdown-list {
-  display: none; /* Hide the dropdown list by default */
+  display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
   z-index: 1;
   list-style-type: none;
   padding: 0;
   margin: 0;
   border-radius: 5px;
 }
-
-.dropdown-list li {
-  padding: 10px;
-}
-
+.dropdown-list li { padding: 10px; }
 .dropdown-list li a {
   color: black;
   text-decoration: none;
   display: block;
 }
+.dropdown-list li a:hover { background-color: #ddd; }
 
-.dropdown-list li a:hover {
-  background-color: #ddd; /* Light gray on hover */
-}
-
-/* Projects grid container */
+/* Projects grid */
 .projects-container {
   display: grid;
-  grid-template-columns: 275px 275px; /* Set columns to match image width */
-  gap: 20px; /* Space between items */
-  justify-content: start; /* Align grid to the left */
-  padding: 20px; /* Add padding around the grid */
+  grid-template-columns: 275px 275px;
+  gap: 20px;
+  justify-content: start;
+  padding: 20px;
 }
-
-/* Each project item */
 .project-item img {
-  width: 275px; /* Width of images */
-  height: 175px; /* Height of images */
-  object-fit: cover; /* Makes images fit neatly */
-  border: 2px solid #ccc; /* Optional border */
-  border-radius: 5px; /* Optional rounded corners */
+  width: 275px;
+  height: 175px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 5px;
 }
-
-/* Text below each project */
 .project-item p {
-  text-align: left; /* Align project title text to the left */
-  margin: 10px 0 0 0; /* Add space between the image and text */
-  font-size: 16px; /* Adjust font size */
+  text-align: left;
+  margin: 10px 0 0 0;
+  font-size: 16px;
 }
-
