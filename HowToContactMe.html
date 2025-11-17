@@ -8,11 +8,11 @@
 
   <style>
     :root{
-      --bg: #f4fff4;     /* page background */
-      --fg: #1d1d1f;     /* text */
+      --bg: #f4fff4;
+      --fg: #1d1d1f;
       --muted: #333;
-      --card: #ffffff;   /* panels */
-      --accent: #1b8a1b; /* brand green */
+      --card: #ffffff;
+      --accent: #1b8a1b;
       --shadow: 0 6px 18px rgba(0,0,0,.08);
       --radius: 12px;
     }
@@ -21,12 +21,12 @@
       background: var(--bg);
       color: var(--fg);
       margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
       line-height: 1.4;
     }
 
     h1, h2 { margin: 16px; }
-    nav, form {
+    nav {
       background: var(--card);
       margin: 16px;
       padding: 16px;
@@ -74,103 +74,18 @@
 
     ul { padding-left: 24px; margin: 12px 0 0 0; }
     a[target="_blank"] { rel: noopener; }
-
-    label { display:block; margin-top: 8px; font-weight: 600; }
-    input, textarea {
-      width: 100%;
-      max-width: 560px;
-      box-sizing: border-box;
-      margin-top: 6px;
-      padding: 10px 12px;
-      border: 1px solid #d0d0d0;
-      border-radius: 8px;
-      background: #fff;
-      color: var(--fg);
-    }
-    textarea { resize: vertical; }
-
-    #send-btn {
-      margin-top: 12px;
-      padding: 10px 16px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    #send-btn[disabled] { opacity: .6; cursor: not-allowed; }
-
-    #status { margin-top: .5rem; font-size: .95rem; }
-    #status.ok { color: #065; }
-    #status.error { color: #a00; }
   </style>
 
-  <!-- EmailJS v4 SDK (defer so it loads before our script below) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-  <!-- Our logic (also deferred) -->
-  <script defer>
-    // everything runs after parsing + after EmailJS loads
-    window.addEventListener("DOMContentLoaded", () => {
-      // Dropdown toggle + click-outside to close
-      const btn = document.querySelector(".dropdown-btn");
-      const list = document.querySelector(".dropdown-list");
-      btn?.addEventListener("click", (e) => {
+  <script>
+    // simple dropdown toggle + click-outside close
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.querySelector('.dropdown-btn');
+      const list = document.querySelector('.dropdown-list');
+      btn?.addEventListener('click', (e) => {
         e.stopPropagation();
-        list?.classList.toggle("active");
+        list?.classList.toggle('active');
       });
-      document.addEventListener("click", () => list?.classList.remove("active"));
-
-      const form   = document.getElementById("contact-form");
-      const send   = document.getElementById("send-btn");
-      const status = document.getElementById("status");
-
-      // Guard: make sure EmailJS is actually there
-      if (!("emailjs" in window)) {
-        console.error("EmailJS SDK failed to load.");
-        if (status) {
-          status.className = "error";
-          status.textContent = "❌ Email service unavailable. Check your connection.";
-        }
-        return;
-      }
-
-      // Init with your public key
-      try {
-        emailjs.init({ publicKey: "7agWfKJIVm8Fha7A7" }); // <-- keep or replace with your real public key
-      } catch (e) {
-        console.error("EmailJS init error:", e);
-      }
-
-      form?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        // tiny honeypot trap
-        if (form.bot_field && form.bot_field.value) return;
-
-        send.disabled = true;
-        status.className = "";
-        status.textContent = "Sending…";
-
-        try {
-          // IMPORTANT: these IDs must match your EmailJS dashboard
-          await emailjs.sendForm(
-            "service_ef8oh5y",  // Service ID
-            "template_yfzk6cv", // Template ID
-            form
-          );
-          status.className = "ok";
-          status.textContent = "✅ Email sent! I’ll get back to you soon.";
-          form.reset();
-        } catch (err) {
-          console.error("EmailJS Error:", err);
-          status.className = "error";
-          status.textContent = "❌ Failed to send. Please try again shortly.";
-          alert("Failed to send email. See console for details.");
-        } finally {
-          send.disabled = false;
-        }
-      });
+      document.addEventListener('click', () => list?.classList.remove('active'));
     });
   </script>
 </head>
@@ -191,7 +106,7 @@
     </div>
     <hr>
     <ul>
-      <li><a href="mailto:ron.saks@gmx.ch?subject=Hello%20There">Personal Email: ron.saks@gmx.ch</a></li>
+      <li><a href="mailto:ron.saks@gmx.ch">Personal Email: ron.saks@gmx.ch</a></li>
       <li><a href="tel:+41-76-295-06-97">Phone: +41 76 295 06 97</a></li>
       <li><a href="https://github.com/rsaks29" target="_blank" rel="noopener">GitHub: rsaks29</a></li>
       <li><a href="https://github.com/goblin101-co" target="_blank" rel="noopener">GitHub Organization: rsaks29 CO</a></li>
@@ -199,24 +114,8 @@
     </ul>
   </nav>
 
-  <h2>Send me an email</h2>
-  <form id="contact-form" novalidate>
-    <label for="email">Your Email:</label>
-    <!-- name must match your EmailJS template variable -->
-    <input type="email" id="email" name="reply_to" placeholder="you@example.com" required />
-
-    <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject" placeholder="Quick hello" required />
-
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" rows="5" placeholder="Write your message…" required></textarea>
-
-    <!-- tiny honeypot to reduce spam -->
-    <input type="text" name="bot_field" style="display:none" tabindex="-1" autocomplete="off" />
-
-    <button id="send-btn" type="submit">Send Email</button>
-    <p id="status" aria-live="polite"></p>
-  </form>
+  <h2>Contact</h2>
+  <p style="margin:16px">Click the email link above to open your mail client, or use the phone/GitHub/LinkedIn links.</p>
 
 </body>
 </html>
