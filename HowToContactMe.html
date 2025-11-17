@@ -1,121 +1,32 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="color-scheme" content="light" />
-  <title>Contact Me</title>
-
-  <style>
-    :root{
-      --bg: #f4fff4;
-      --fg: #1d1d1f;
-      --muted: #333;
-      --card: #ffffff;
-      --accent: #1b8a1b;
-      --shadow: 0 6px 18px rgba(0,0,0,.08);
-      --radius: 12px;
-    }
-
-    html, body {
-      background: var(--bg);
-      color: var(--fg);
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
-      line-height: 1.4;
-    }
-
-    h1, h2 { margin: 16px; }
-    nav {
-      background: var(--card);
-      margin: 16px;
-      padding: 16px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .Menu { position: relative; display: inline-block; }
-    .dropdown-btn {
-      padding: 10px 16px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
-    }
-    .dropdown-btn:focus { outline: 2px solid #0d5e0d; outline-offset: 2px; }
-
-    .dropdown-list {
-      list-style: none;
-      margin: 6px 0 0 0;
-      padding: 6px 0;
-      background: #f2f2f2;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 180px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.15);
-      display: none;
-      border-radius: 8px;
-      z-index: 10;
-    }
-    .dropdown-list.active { display: block; }
-    .dropdown-list li a {
-      display: block;
-      padding: 10px 12px;
-      text-decoration: none;
-      color: var(--muted);
-      border-radius: 6px;
-    }
-    .dropdown-list li a:hover { background: #e6e6e6; }
-
-    ul { padding-left: 24px; margin: 12px 0 0 0; }
-    a[target="_blank"] { rel: noopener; }
-  </style>
-
-  <script>
-    // simple dropdown toggle + click-outside close
-    document.addEventListener('DOMContentLoaded', () => {
-      const btn = document.querySelector('.dropdown-btn');
-      const list = document.querySelector('.dropdown-list');
-      btn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        list?.classList.toggle('active');
-      });
-      document.addEventListener('click', () => list?.classList.remove('active'));
-    });
-  </script>
-</head>
-<body>
-
-  <h1><strong>HOW TO CONTACT ME</strong></h1>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <h1>
+    <strong>HOW TO CONTACT ME</strong>
+  </h1>
   <hr>
-
   <nav>
-    <div class="Menu">
-      <button class="dropdown-btn" type="button">Select Option</button>
-      <ul class="dropdown-list" role="menu" aria-label="Site sections">
-        <li><a href="index.html">Main</a></li>
-        <li><a href="AboutMe.html">About me</a></li>
-        <li><a href="Projects.html">Projects</a></li>
-        <li><a href="HowToContactMe.html" aria-current="page">How to contact me?</a></li>
-      </ul>
-    </div>
-    <hr>
-    <ul>
-      <li><a href="mailto:ron.saks@gmx.ch">Personal Email: ron.saks@gmx.ch</a></li>
-      <li><a href="tel:+41-76-295-06-97">Phone: +41 76 295 06 97</a></li>
-      <li><a href="https://github.com/rsaks29" target="_blank" rel="noopener">GitHub: rsaks29</a></li>
-      <li><a href="https://github.com/goblin101-co" target="_blank" rel="noopener">GitHub Organization: rsaks29 CO</a></li>
-      <li><a href="https://www.linkedin.com/in/ron-samuel-saks-9aa663221/" target="_blank" rel="noopener">LinkedIn: Ron Saks</a></li>
-    </ul>
-  </nav>
-
-  <h2>Contact</h2>
-  <p style="margin:16px">Click the email link above to open your mail client, or use the phone/GitHub/LinkedIn links.</p>
-
-</body>
+<!-- Dropdown button -->
+<div class="Menu">
+  <button class="dropdown-btn">Select Option</button>
+  <ul class="dropdown-list">
+      <li><a href="index.html">Main</a></li>
+      <li><a href="AboutMe.html">About me</a></li>
+      <li><a href="Projects.html">Projects</a></li>
+      <li><a href="HowToContactMe.html">How to contact me?</a></li>
+  </ul>
+</div>
+<hr>
+<script src="script.js"></script>
+  <li><a href="mailto:ron.saks@gmx.ch">Personal Email: ron.saks@gmx.ch</a></li>
+  <li><a href="tel:+41-76-295-06-97" target="_blank">Phone: +41 76 295 06 97</a></li>
+  <li><a href="https://github.com/rsaks29" target="_blank">GitHub: rsaks29</a></li>
+  <li><a href="https://www.linkedin.com/in/ron-samuel-saks-9aa663221/" target="_blank">LinkedIn: Ron Saks</a></li>
+  <li><a href="https://github.com/goblin101-co" target="_blank">GitHub Organization: rsaks29 CO</a></li>
+</nav>
 </html>
