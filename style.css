@@ -1,93 +1,249 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+}
+
 html {
-  background-color: lightblue;
+  scroll-behavior: smooth;
 }
 
-.embed-container,
-.embed-container2 {
-  text-align: center;
-}
-
-/* Image hover effect */
-img {
-  width: 275px;
-  height: auto;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
-
-/* Links */
-a {
-  text-decoration: none;
-  color: black;
-}
-a:hover {
-  opacity: 0.8;
-}
-
-/* Project titles */
-p {
-  font-size: 14px;
-  margin-top: 8px;
-  text-align: center;
-}
-
-/* (You also had a second dropdown style block — keeping it, but your page uses .Menu/.dropdown-btn/.dropdown-list already) */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown-btn {
-  background-color: green;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.dropdown-btn:hover {
-  background-color: darkgreen;
-}
-.dropdown-list {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-  list-style-type: none;
-  padding: 0;
+body {
   margin: 0;
-  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f8fafc;
+  min-height: 100vh;
 }
-.dropdown-list li { padding: 10px; }
-.dropdown-list li a {
-  color: black;
-  text-decoration: none;
+
+/* Page layout */
+.page-wrapper {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+  padding: 40px 0 70px;
+}
+
+.hero {
+  text-align: center;
+  padding: 70px 20px 45px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 4px;
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 18px auto 0;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 55px;
+}
+
+.Menu {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 13px 24px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  font-size: 0.95rem;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.dropdown-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-list {
+  list-style: none;
+  padding: 10px;
+  margin: 12px 0 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 190px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  display: none;
+  z-index: 10;
+}
+
+.Menu:hover .dropdown-list,
+.dropdown-list.show-dropdown {
   display: block;
 }
-.dropdown-list li a:hover { background-color: #ddd; }
 
-/* Projects grid */
+.dropdown-list li a {
+  display: block;
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 11px 14px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-list li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* General links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Shared card style */
+.card,
+.project-item,
+.contact-card,
+.link-card,
+.reason-card,
+.about-card,
+.intro-card,
+.blog-card,
+.resume-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* Project grid */
 .projects-container {
   display: grid;
-  grid-template-columns: 275px 275px;
-  gap: 20px;
-  justify-content: start;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
+
+.project-item {
+  min-height: 280px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+}
+
+.project-item a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
 .project-item img {
-  width: 275px;
-  height: 175px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
-  border: 2px solid #ccc;
-  border-radius: 5px;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+.project-item:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.08);
+}
+
 .project-item p {
+  margin: 0;
+  padding: 20px;
+  color: #f8fafc;
+  font-size: 1.05rem;
+  font-weight: 600;
   text-align: left;
-  margin: 10px 0 0 0;
-  font-size: 16px;
+}
+
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(14, 165, 233, 0.12));
+}
+
+.coming-soon p {
+  color: #dbeafe;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+/* Embedded documents */
+.embed-container,
+.embed-container2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+iframe {
+  width: 100%;
+  max-width: 850px;
+  border: none;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+/* Buttons and back links */
+.back-link,
+button {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 13px 24px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.back-link:hover,
+button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 45px;
+  }
+
+  .page-wrapper {
+    width: min(100% - 28px, 1100px);
+  }
+
+  .project-item {
+    min-height: auto;
+  }
 }
