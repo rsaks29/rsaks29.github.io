@@ -5,27 +5,203 @@
   <meta name="viewport" content="width=device-width">
   <title>PROJECTS</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+
+    .page-wrapper {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+      padding: 40px 0 70px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 20px 45px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      letter-spacing: 4px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 18px auto 0;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 55px;
+    }
+
+    .Menu {
+      position: relative;
+    }
+
+    .dropdown-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 13px 24px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      font-size: 0.95rem;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .dropdown-btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .dropdown-list {
+      list-style: none;
+      padding: 10px;
+      margin: 12px 0 0;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 190px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      display: none;
+      z-index: 10;
+    }
+
+    .Menu:hover .dropdown-list {
+      display: block;
+    }
+
+    .dropdown-list li a {
+      display: block;
+      color: #e2e8f0;
+      text-decoration: none;
+      padding: 11px 14px;
+      border-radius: 12px;
+      transition: background 0.2s ease;
+    }
+
+    .dropdown-list li a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .section-title {
+      margin-bottom: 25px;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .project-item {
+      min-height: 280px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .project-item:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-item a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+      height: 100%;
+    }
+
+    .project-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-item p {
+      margin: 0;
+      padding: 20px;
+      color: #f8fafc;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .coming-soon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(14, 165, 233, 0.12));
+    }
+
+    .coming-soon p {
+      color: #dbeafe;
+      font-size: 1.15rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 45px;
+      }
+
+      .project-item {
+        min-height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1><strong>PROJECTS</strong></h1>
-  <hr>
-  <nav>
-    <!-- Dropdown button -->
-    <div class="Menu">
-      <button class="dropdown-btn">Select Option</button>
-      <ul class="dropdown-list">
-        <li><a href="index.html">Main</a></li>
-        <li><a href="AboutMe.html">About me</a></li>
-        <li><a href="Projects.html">Projects</a></li>
-        <li><a href="HowToContactMe.html">How to contact me?</a></li>
-      </ul>
-    </div>
-  </nav>
-  <hr>
-  <script src="script.js"></script>
-  <h3>These are some of my projects:</h3>
-  <!-- Projects Container -->
-  <div class="projects-container">
+  <div class="page-wrapper">
+    <section class="hero">
+      <h1>Projects</h1>
+      <p>A collection of things I have built while learning, experimenting, and improving my coding skills.</p>
+    </section>
+
+    <nav>
+      <!-- Dropdown button -->
+      <div class="Menu">
+        <button class="dropdown-btn">Explore Website</button>
+        <ul class="dropdown-list">
+          <li><a href="index.html">Main</a></li>
+          <li><a href="AboutMe.html">About me</a></li>
+          <li><a href="Projects.html">Projects</a></li>
+          <li><a href="HowToContactMe.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <script src="script.js"></script>
+    <h3 class="section-title">Featured projects</h3>
+    <!-- Projects Container -->
+    <div class="projects-container">
     <div class="project-item">
       <a href="https://github.com/goblin101/javascriptwebsitegame" target="_blank">
         <img alt="Space Shooter Game" src="images/Demo.PNG">
@@ -47,8 +223,9 @@
       </a>
     </div>
 
-    <div class="project-item">
-      <p>More projects coming soon!</p>
+      <div class="project-item coming-soon">
+        <p>More projects coming soon!</p>
+      </div>
     </div>
   </div>
 </body>
