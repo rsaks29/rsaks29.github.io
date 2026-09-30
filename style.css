@@ -115,6 +115,12 @@ h1 em { font-weight: 400; color: var(--accent); }
 .contact-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
 .contact-card h2 { font-size: clamp(23px, 2.8vw, 34px); overflow-wrap: anywhere; margin-bottom: 12px; }
 .contact-card p { font-size: 13px; margin: 0; }
+/* Match the published page widths, including their margins and scrollbar space. */
+.document-page { --document-width: 850px; }
+.document-page--writing { --document-width: 828px; }
+.document-page .page-intro,
+.document-page .document-section,
+.document-page .back-row { width: 100%; max-width: var(--document-width); margin-inline: auto; }
 .document-section { border: 1px solid var(--line); background: var(--surface); }
 .document-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 28px; border-bottom: 1px solid var(--line); }
 .document-toolbar > span { font-family: var(--serif); font-size: 22px; }
